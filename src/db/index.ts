@@ -1,8 +1,9 @@
 import { Dexie, Table } from "dexie";
 import { UserType } from "../components/types";
 
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 export const getUserData = async () => {
-  const url = "https://run.mocky.io/v3/a57e4ca8-0fef-499a-8fa5-e721afc55ea2";
+  const url = `${API_URL}`;
   const response = await fetch(url);
   if (response.ok) {
     const result = await response.json();
@@ -19,18 +20,7 @@ export const createDbstore = async () => {
   const firstUser = data[0];
   const allKeys = Object.keys(firstUser).join(",");
   return allKeys;
-  // const db = new Dexie("UserDatabase");
-
-  // db.version(1).stores({
-  //   users: allKeys,
-  // });
-  // return db;
 };
-
-// export const addUsers = async () => {
-//   const db = await createDbstore();
-//   db.users.add();
-// };
 
 export class MySubClassedDexie extends Dexie {
   users!: Table<UserType>;

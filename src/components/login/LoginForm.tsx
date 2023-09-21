@@ -37,6 +37,7 @@ const LoginForm = () => {
       setTimeout(() => {
         setIsLoading(false);
         setIsAuthenticated(true);
+        toast.success("User login Successfully");
         navigate("/users");
       }, 3000);
     } else {
