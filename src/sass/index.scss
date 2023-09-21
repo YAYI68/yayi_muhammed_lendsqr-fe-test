@@ -1,0 +1,17 @@
+@import "./base";
+@import "./variable";
+@import "./mixin";
+
+::-webkit-scrollbar-thumb {
+  background: $dark-blue-color;
+  border-radius: 5px;
+  height: 2rem;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: $dark-blue-color;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}

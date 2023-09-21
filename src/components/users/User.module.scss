@@ -1,0 +1,337 @@
+@import "../../sass/index.scss";
+
+.card_container {
+  padding: 1.2rem 1.875rem;
+  height: 10rem;
+  width: 15rem;
+  @include breakpoint(md) {
+    width: 35%;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $white-color;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.icon_box {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.info {
+  font-size: 0.9rem;
+}
+.figure {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: $dark-blue-color;
+}
+
+.section_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.table_container {
+  position: relative;
+  width: 100%;
+  background-color: $white-color;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  overflow-x: scroll;
+  @include breakpoint(xl) {
+    width: 100%;
+    overflow-x: visible;
+
+    & table {
+      // position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+  thead tr {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+    justify-content: space-between;
+    border-bottom: thin solid $gray-color;
+  }
+  tbody tr {
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+  }
+  tr:not(:last-of-type) {
+    border-bottom: thin solid $gray-color;
+  }
+
+  th:last-of-type,
+  td:last-of-type {
+    flex: 0;
+  }
+  .filter {
+    height: 0.8rem;
+    width: 0.8rem;
+    margin-left: 0.5rem;
+  }
+  th,
+  td {
+    padding: 1rem;
+    font-size: 0.8rem;
+    width: fit-content;
+    border: none;
+    height: 4rem;
+    min-width: 8rem;
+  }
+  td {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: $gray-color;
+    flex: 1;
+  }
+  .tableLink {
+    text-decoration: none;
+    color: $gray-color;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  th {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    // text-align: left;
+    justify-content: center;
+    text-transform: uppercase;
+    & button {
+      background-color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
+  .status {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: relative;
+  }
+  .status_data {
+    padding: 0.5rem;
+    border-radius: 100px;
+    padding-left: 1rem;
+  }
+  .inactive {
+    background-color: $gray-blue;
+    color: $dark-blue-color;
+  }
+  .pending {
+    background-color: $bg-yellow-color;
+    color: $yellow-color;
+  }
+  .active {
+    background-color: $bg-green-color;
+    color: $green-color;
+  }
+  .blacklist {
+    background-color: $bg-red-color;
+    color: $red-color;
+  }
+  .dotBtn {
+    background-color: $white-color;
+    border: none;
+  }
+  .dot {
+    cursor: pointer;
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}
+
+.paginate_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  @include breakpoint(md) {
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+  }
+}
+.showing {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: $gray-color;
+  font-size: 0.875rem;
+  align-self: flex-start;
+  & button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    color: $dark-blue-color;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  }
+  .dropDown {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    overflow-y: scroll;
+    background-color: $bg-gray-white;
+    top: 100%;
+    padding: 2px;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    & button {
+      border-radius: 4px;
+      color: $dark-blue-color;
+      width: 100%;
+      &:hover {
+        background-color: $dark-blue-color;
+        color: $white-color;
+      }
+    }
+  }
+}
+
+.paginate_list {
+  display: flex;
+  width: fit-content;
+  & button {
+    height: 2rem;
+    width: 2rem;
+    background-color: $bg-gray-white;
+    color: $dark-blue-color;
+    border: none;
+    cursor: pointer;
+  }
+  .arrow {
+    background-color: buttonface;
+  }
+}
+
+.filter_wrapper {
+  position: absolute;
+  top: 7%;
+  left: var(--filterLeftPosition);
+  padding: 1rem;
+  width: 60%;
+  border-radius: 4px;
+  background-color: $white-color;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  @include breakpoint(lg) {
+    width: 18rem;
+    height: 37.5rem;
+  }
+  & form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+    & label {
+      display: block;
+      color: $gray-color;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .input {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: thin solid gray;
+      outline: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.submit_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & button {
+    padding: 0.5rem;
+    text-align: center;
+    color: $dark-blue-color;
+    width: 45%;
+    border-radius: 4px;
+    border: thin solid gray;
+    cursor: pointer;
+  }
+  .filterBtn {
+    background-color: $btn-green;
+    color: $white-color;
+    border: transparent;
+  }
+}
+
+.statusCard {
+  position: absolute;
+  right: 0;
+  top: var(--statusCardPosition);
+  background-color: $white-color;
+  border-radius: 4px;
+  border: 1px solid rgba(84, 95, 125, 0.04);
+  background: #fff;
+  box-shadow: 3px 5px 20px 0px rgba(0, 0, 0, 0.04);
+  width: 50%;
+  height: 8.125rem;
+  padding: 5px;
+  @include breakpoint(sm) {
+    width: 50%;
+    font-size: 0.75rem;
+    right: 0.5rem;
+  }
+  @include breakpoint(md) {
+    width: 25%;
+  }
+  @include breakpoint(lg) {
+    width: 11.2rem;
+  }
+  .status_wrapper {
+    display: flex;
+    padding: 2px;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    & button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: none;
+      flex: 1;
+      background-color: $white-color;
+      gap: 1rem;
+      cursor: pointer;
+      color: $gray-color;
+
+      &:hover {
+        background-color: $bg-green-color;
+      }
+    }
+  }
+}
+
+.underline {
+  text-decoration: underline;
+}

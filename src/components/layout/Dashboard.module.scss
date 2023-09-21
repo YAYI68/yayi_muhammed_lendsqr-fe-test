@@ -1,0 +1,25 @@
+@import "../../sass//index.scss";
+
+.main {
+  width: 100%;
+  background-color: $bg-gray-white;
+  display: flex;
+  margin-top: 6.25rem;
+}
+.aside {
+  display: none;
+  @include breakpoint(lg) {
+    width: 20%;
+    display: block;
+  }
+}
+.wrapper {
+  width: 100%;
+  padding: 1rem;
+  @include breakpoint(lg) {
+    width: 80%;
+    height: 100rem;
+    // padding-left: 58rem;
+    padding: 3rem;
+  }
+}

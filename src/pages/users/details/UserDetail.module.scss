@@ -1,0 +1,71 @@
+@import "../../../sass/index.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.btn {
+  width: 10.65rem;
+  height: 2.5rem;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: $white-color;
+}
+.blacklist {
+  border: thin solid $red-color;
+  color: $red-color;
+  &:hover {
+    background-color: $red-color;
+    color: $white-color;
+  }
+}
+.activate {
+  border: thin solid $btn-green;
+  color: $btn-green;
+  &:hover {
+    background-color: $btn-green;
+    color: $white-color;
+  }
+}
+
+.backBtn {
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: $bg-gray-white;
+  padding: 0.5rem;
+  color: $gray-color;
+  cursor: pointer;
+}
+
+.userDetail {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  @include breakpoint(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  & p {
+    color: $dark-blue-color;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}
+
+.userBtnContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  @include breakpoint(lg) {
+    flex-direction: row;
+  }
+}

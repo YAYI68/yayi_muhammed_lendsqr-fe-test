@@ -1,0 +1,142 @@
+@import "../../sass/index.scss";
+
+.logo {
+  display: none;
+  @include breakpoint(lg) {
+    width: 50%;
+    height: 100%;
+    background: $bg-gray-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo_container {
+    height: 70%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+  }
+  .logo_box {
+    height: 2.25rem;
+    width: 11rem;
+    padding-left: 2rem;
+    cursor: pointer;
+    & img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .logo_svg {
+    width: 100%;
+    height: 22.5rem;
+    & img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.form_section {
+  background-color: $white-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  @include breakpoint(lg) {
+    width: 50%;
+  }
+
+  .form_container {
+    width: 90%;
+    height: 80%;
+    @include breakpoint(lg) {
+      width: 80%;
+      height: 60%;
+    }
+    & h1 {
+      font-size: 2.5rem;
+      color: $dark-blue-color;
+      text-align: center;
+      @include breakpoint(lg) {
+        text-align: left;
+      }
+    }
+    & p {
+      font-size: 1.25rem;
+      text-align: center;
+      @include breakpoint(lg) {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.form {
+  width: 100%;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @include breakpoint(lg) {
+    width: 80%;
+  }
+  .input_text {
+    width: 100%;
+    height: 3.125rem;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    border: 2px solid $gray-color;
+  }
+
+  .password {
+    width: 100%;
+    height: 3.125rem;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid $gray-color;
+    display: flex;
+    & input {
+      width: 80%;
+      height: 100%;
+      font-size: 1.2rem;
+      padding: 10px;
+      outline: none;
+      border: none;
+    }
+
+    & button {
+      width: 20%;
+      text-align: center;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      color: $btn-green;
+    }
+  }
+}
+
+.forget_password {
+  color: $btn-green;
+}
+.btn_submit {
+  width: 100%;
+  height: 3rem;
+  border-radius: 5px;
+  font-size: 14px;
+  text-align: center;
+  background-color: $btn-green;
+  color: $white-color;
+  border: none;
+  cursor: pointer;
+}
+
+.loader {
+  height: 5px;
+  width: 5px;
+}

@@ -1,0 +1,198 @@
+@import "../../../sass/index.scss";
+
+.header {
+  width: 100vw;
+  height: 6.25rem;
+  background-color: $white-color;
+  padding: 1rem 1rem;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  @include breakpoint(lg) {
+    padding: 1.875rem 1.875rem;
+  }
+}
+
+.main_nav {
+  display: none;
+  @include breakpoint(lg) {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo_search {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search_box {
+      width: 25rem;
+      border-radius: 8px;
+      border: 1px solid $gray-blue;
+      height: 100%;
+      background: $white-color;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      & input {
+        width: 85%;
+        height: 100%;
+        border: none;
+        outline: none;
+        padding: 5px;
+        font-size: 1.2rem;
+      }
+      & button {
+        width: 15%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $btn-green;
+        border: none;
+        cursor: pointer;
+      }
+
+      .main_search {
+        height: 1rem;
+        width: 1rem;
+        fill: $white-color;
+      }
+    }
+    .admin_detail {
+      width: 20%;
+      display: flex;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: $dark-blue-color;
+      & button {
+        background-color: $white-color;
+        border: none;
+      }
+    }
+    .doc {
+      font-family: Roboto;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-decoration-line: underline;
+    }
+    .notification {
+      height: 1.625rem;
+      width: 1.625rem;
+      color: $dark-blue-color;
+      fill: $dark-blue-color;
+    }
+
+    .profile {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+    .profile_img {
+      height: 3rem;
+      width: 3rem;
+      background-color: $yellow-color;
+      border-radius: 50%;
+      overflow: hidden;
+      & img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .profile_info {
+      border: none;
+      background-color: transparent;
+      color: $dark-blue-color;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .arrow {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+.mobile_nav {
+  @include breakpoint(lg) {
+    display: none;
+  }
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .barBtn {
+    height: 2rem;
+    width: 2rem;
+    background-color: transparent;
+    border: none;
+  }
+  .barIcon {
+    color: $dark-blue-color;
+    height: 100%;
+    width: 100%;
+  }
+  .lendsqr {
+    width: 30%;
+    display: block;
+    height: 70%;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .dash_detail {
+    display: flex;
+    width: 45%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    & button {
+      height: 1rem;
+      width: 1rem;
+      border: none;
+      background-color: $white-color;
+    }
+    .search_icon {
+      height: 1.2rem;
+      width: 1.2rem;
+      fill: $dark-blue-color;
+    }
+  }
+  .mobile_profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    .mobile_img {
+      height: 1.5rem;
+      width: 1.5rem;
+      background-color: aqua;
+      border-radius: 50%;
+      overflow: hidden;
+      & img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    & button {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+  }
+}
