@@ -16,7 +16,7 @@ const LoginForm = () => {
     email: "",
     password: "",
   });
-  const handleOnChange = (event) => {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormvalue((prev) => ({
       ...prev,
       [event.target.name]: event.target.value,
@@ -28,8 +28,8 @@ const LoginForm = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     console.log({ formValue });
     const { email, password } = formValue;
     setIsLoading(true);

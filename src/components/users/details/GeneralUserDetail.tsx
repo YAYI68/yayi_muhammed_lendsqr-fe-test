@@ -4,7 +4,7 @@ import css from "./UserProfile.module.scss";
 
 type infoProps = {
   heading: string;
-  content: string | number;
+  content: string | number | undefined;
 };
 const Information = (props: infoProps) => {
   return (
@@ -88,7 +88,11 @@ const GeneralUserDetail = (props: GeneralUserProps) => {
           <Information heading="Email Address" content={user.email} />
           <Information
             heading="Relationship"
-            content={user.guarantor_relationship ?? "Parent"}
+            content={
+              user.guarantor_relationship
+                ? user.guarantor_relationship
+                : "Parent"
+            }
           />
         </div>
       </div>

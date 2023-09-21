@@ -75,7 +75,11 @@ const UserTable = () => {
   useClickAway(CardContainerRef, () => setCardToggle(false));
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className={css.loaderContainer}>
+        <Loader className={css.loader} />;
+      </div>
+    );
   }
 
   return (
@@ -110,7 +114,7 @@ const UserTable = () => {
           {filtertoggle ? (
             <div
               style={{
-                "--filterLeftPosition": `${filterPos * 10}rem`,
+                left: `${filterPos * 10}rem`,
               }}
               ref={FilterContainerRef}
               className={css.filter_wrapper}
@@ -123,7 +127,7 @@ const UserTable = () => {
           {cardtoggle ? (
             <div
               style={{
-                "--statusCardPosition": `${cardPos * 10 + 5}%`,
+                top: `${cardPos * 10 + 5}%`,
               }}
               ref={CardContainerRef}
               className={css.statusCard}

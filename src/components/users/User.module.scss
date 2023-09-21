@@ -229,7 +229,7 @@
 .filter_wrapper {
   position: absolute;
   top: 7%;
-  left: var(--filterLeftPosition);
+  // left: var(--filterLeftPosition);
   padding: 1rem;
   width: 60%;
   border-radius: 4px;
@@ -286,7 +286,7 @@
 .statusCard {
   position: absolute;
   right: 0;
-  top: var(--statusCardPosition);
+  // top: var(--statusCardPosition);
   background-color: $white-color;
   border-radius: 4px;
   border: 1px solid rgba(84, 95, 125, 0.04);
@@ -334,4 +334,17 @@
 
 .underline {
   text-decoration: underline;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+}
+
+.loaderContainer {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

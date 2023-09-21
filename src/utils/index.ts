@@ -24,7 +24,7 @@ export const changeUserStatus = async (
   await db.users.where({ username }).modify({ status });
 };
 
-export const dateFormat = (date) => {
+export const dateFormat = (date: string) => {
   const change = new Date(date);
   const month_year = change.toDateString().slice(4).trim();
   const month = month_year.slice(0, 6).trim();

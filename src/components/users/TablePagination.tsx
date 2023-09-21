@@ -32,8 +32,12 @@ const TablePagination = () => {
     }
   }, [page, totalPages]);
 
-  console.log({ pageList });
-
+  const hanleChangePage = (num: number | string) => {
+    if (typeof num !== "number") {
+      return;
+    }
+    changePage(num);
+  };
   return (
     <div className={css.paginate_wrapper}>
       <div className={css.showing}>
@@ -63,7 +67,7 @@ const TablePagination = () => {
         {pageList.map((num) => (
           <button
             style={num === page ? { textDecoration: "underline" } : {}}
-            onClick={() => changePage(num)}
+            onClick={() => hanleChangePage(num)}
             disabled={num === "..."}
             key={num}
           >
