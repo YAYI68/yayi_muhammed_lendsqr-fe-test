@@ -25,7 +25,7 @@ const GeneralUserDetail = (props: GeneralUserProps) => {
   return (
     <section className={css.generalContainer}>
       <div id="personal" className={css.personalWrapper}>
-        <p>Personal Information</p>
+        <p className={css.info_heading}>Personal Information</p>
         <div className={css.infomationContainer}>
           <Information heading="Full Name" content={user.full_name} />
           <Information heading="Phone Number" content={user.phone_number} />
@@ -43,7 +43,7 @@ const GeneralUserDetail = (props: GeneralUserProps) => {
         </div>
       </div>
       <div id="personal" className={css.personalWrapper}>
-        <p>Education and Employment</p>
+        <p className={css.info_heading}>Education and Employment</p>
         <div className={css.infomationContainer}>
           <Information
             heading="level of education"
@@ -70,7 +70,7 @@ const GeneralUserDetail = (props: GeneralUserProps) => {
         </div>
       </div>
       <div id="personal" className={css.personalWrapper}>
-        <p>Socials</p>
+        <p className={css.info_heading}>Socials</p>
         <div className={css.infomationContainer}>
           <Information heading="Twitter" content={`@${user.username}`} />
           <Information heading="Facebook" content={user.username} />
@@ -78,7 +78,7 @@ const GeneralUserDetail = (props: GeneralUserProps) => {
         </div>
       </div>
       <div id="personal" className={`${css.personalWrapper}`}>
-        <p>Guarantor</p>
+        <p className={css.info_heading}>Guarantor</p>
         <div className={css.infomationContainer}>
           <Information heading="full Name" content={user.guarantor_fullname} />
           <Information

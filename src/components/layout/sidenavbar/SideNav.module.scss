@@ -23,9 +23,12 @@
     z-index: 2;
   }
   .link_wrapper {
+    @include breakpoint(md) {
+      width: 40%;
+    }
     position: absolute;
     height: 100%;
-    width: 60%;
+    width: 50%;
     z-index: 3;
     background-color: $white-color;
     display: flex;
@@ -39,11 +42,15 @@
     display: flex;
     flex-direction: column;
     position: fixed;
-    width: 60%;
+    width: 50%;
     background-color: white;
     top: 0;
     left: 0;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    & img {
+      width: 80%;
+    }
 
     & button {
       background-color: $white-color;
@@ -148,7 +155,7 @@
     color: $gray-color;
     font-size: 1rem;
     @include breakpoint(lg) {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
     &:hover {
       background-color: $bg-green-color;

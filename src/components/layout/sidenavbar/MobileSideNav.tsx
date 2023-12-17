@@ -1,4 +1,5 @@
 import Logo from "../../../assets/svg/logo.svg";
+import { useAuth } from "../../../hooks";
 import { ExitIcon, TimesIcon } from "../../ui/svg";
 import { DashboardButton, NavLinkSection, SwitchButton } from "./AllLinks";
 import css from "./SideNav.module.scss";
@@ -10,7 +11,10 @@ type mobileSlideProps = {
 };
 const MobileSideNav = (props: mobileSlideProps) => {
   const { slideIn, setSlideIn } = props;
-
+  const { setIsAuthenticated } = useAuth();
+  const logout = () => {
+    setIsAuthenticated(false);
+  };
   return (
     <>
       {slideIn ? (
@@ -37,6 +41,7 @@ const MobileSideNav = (props: mobileSlideProps) => {
                   <div>
                     {SectionLinks.map((section, i) => (
                       <NavLinkSection
+                        setSlideIn={setSlideIn}
                         key={i}
                         sectionName={section.section}
                         links={section.links}
@@ -45,7 +50,7 @@ const MobileSideNav = (props: mobileSlideProps) => {
                   </div>
 
                   <div className={css.logout_container}>
-                    <button className={css.logouBtn}>
+                    <button onClick={logout} className={css.logouBtn}>
                       <ExitIcon className="" />
                       <span>Log out</span>
                     </button>

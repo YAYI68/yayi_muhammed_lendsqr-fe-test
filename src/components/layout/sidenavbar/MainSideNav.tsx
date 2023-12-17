@@ -6,6 +6,9 @@ import css from "./SideNav.module.scss";
 
 const MainSideNav = () => {
   const { setIsAuthenticated } = useAuth();
+  const logout = () => {
+    setIsAuthenticated(false);
+  };
   return (
     <div className={css.main_side}>
       <div className={css.mobile_links}>
@@ -23,10 +26,7 @@ const MainSideNav = () => {
           </div>
 
           <div className={css.logout_container}>
-            <button
-              onClick={() => setIsAuthenticated(false)}
-              className={css.logouBtn}
-            >
+            <button onClick={logout} className={css.logouBtn}>
               <ExitIcon className="" />
               <span>Log out</span>
             </button>

@@ -6,7 +6,7 @@ type Store = {
 };
 
 const useIsLoading = create<Store>((set) => ({
-  isLoading: true,
+  isLoading: false,
   setIsLoading: (condition) => set(() => ({ isLoading: condition })),
 }));
 

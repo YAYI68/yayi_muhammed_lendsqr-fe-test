@@ -11,39 +11,36 @@ import { useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../../db";
 import { useFilter, usePaginate } from "../../hooks";
-import { changeUserStatus } from "../../utils";
 
 type StatusCardProps = {
   username: string;
-  setCardToggle: () => void;
+  handleStatusChange: (s: string) => void;
 };
 export const UserStatusCard = (props: StatusCardProps) => {
-  const { username, setCardToggle } = props;
+  const { username, handleStatusChange } = props;
+
   const navigate = useNavigate();
   const viewClick = () => {
     navigate(`/users/${username}`);
   };
 
-  const handleStatusChange = (status: string) => {
-    changeUserStatus(username, status);
-    setCardToggle();
-  };
-
   return (
-    <div className={css.status_wrapper}>
-      <button onClick={viewClick}>
-        <ViewStatusIcon />
-        <span>View Details</span>
-      </button>
-      <button onClick={() => handleStatusChange("blacklist")}>
-        <BlackListIcon />
-        <span>Blacklist User</span>
-      </button>
-      <button onClick={() => handleStatusChange("active")}>
-        <ActivateUserStatusIcon />
-        <span>Activate User</span>
-      </button>
-    </div>
+    <>
+      <div className={css.status_wrapper}>
+        <button onClick={viewClick}>
+          <ViewStatusIcon />
+          <span>View Details</span>
+        </button>
+        <button onClick={() => handleStatusChange("blacklist")}>
+          <BlackListIcon />
+          <span>Blacklist User</span>
+        </button>
+        <button onClick={() => handleStatusChange("active")}>
+          <ActivateUserStatusIcon />
+          <span>Activate User</span>
+        </button>
+      </div>
+    </>
   );
 };
 

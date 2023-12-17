@@ -24,7 +24,7 @@ const TableData = (props: tableDataProps) => {
   } = props;
 
   return (
-    <tr>
+    <tr className={css.tableRow}>
       <td>
         <span>{organization}</span>
       </td>

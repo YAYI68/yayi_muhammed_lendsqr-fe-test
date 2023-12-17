@@ -6,9 +6,17 @@ type Store = {
 };
 
 const useAuth = create<Store>((set) => ({
-  isAuthenticated: false,
-  setIsAuthenticated: (authState) =>
-    set((state) => ({ isAuthenticated: (state.isAuthenticated = authState) })),
+  isAuthenticated: localStorage.getItem("persist")
+    ? Boolean(localStorage.getItem("persist"))
+    : false,
+  setIsAuthenticated: (authState) => {
+    if (authState) {
+      localStorage.setItem("persist", `${authState}`);
+    } else {
+      localStorage.removeItem("persist");
+    }
+    set((state) => ({ isAuthenticated: (state.isAuthenticated = authState) }));
+  },
 }));
 
 export default useAuth;

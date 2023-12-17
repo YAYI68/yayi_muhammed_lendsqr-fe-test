@@ -27,13 +27,15 @@ type linkProps = {
   name: string;
   url: string;
   icon: React.ReactNode;
+  setSlideIn: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const SideLink = (props: linkProps) => {
-  const { name, url, icon } = props;
+  const { name, url, icon, setSlideIn } = props;
   const { pathname } = useLocation();
   return (
     <li>
       <Link
+        onClick={() => setSlideIn(false)}
         to={url}
         className={`${css.link}  ${url === pathname ? css.activelink : ""}`}
       >
@@ -53,9 +55,10 @@ type linkType = {
 type linkSectionProps = {
   sectionName: string;
   links: linkType[];
+  setSlideIn: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export const NavLinkSection = (props: linkSectionProps) => {
-  const { sectionName, links } = props;
+  const { sectionName, links, setSlideIn } = props;
   const [toggle, setToggle] = useState(false);
   return (
     <div className={css.link_container}>
@@ -63,9 +66,15 @@ export const NavLinkSection = (props: linkSectionProps) => {
         {" "}
         <span>{sectionName}</span> <StraightArrowDownIcon className="" />{" "}
       </button>
-      <ul className={toggle ? css.slideDown : ""}>
+      <ul className={css.slideDown}>
         {links.map((link, i) => (
-          <SideLink key={i} icon={link.icon} name={link.name} url={link.url} />
+          <SideLink
+            setSlideIn={setSlideIn}
+            key={i}
+            icon={link.icon}
+            name={link.name}
+            url={link.url}
+          />
         ))}
       </ul>
     </div>

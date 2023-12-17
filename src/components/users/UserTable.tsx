@@ -1,15 +1,14 @@
 import { useRef, useState } from "react";
-import { useClickAway, useFilter, usePaginate } from "../../hooks";
+import { useClickAway } from "../../hooks";
 import TableFilterCard, { UserStatusCard } from "./TableFilterCard";
 import css from "./User.module.scss";
 import TableHeading from "./TableHeading";
 import TableData from "./TableData";
 import TablePagination from "./TablePagination";
-import { filteredInput } from "../../utils";
-import { useLiveQuery } from "dexie-react-hooks";
-import { db } from "../../db";
-import Loader from "../loader/Loader";
-
+import { UserType } from "../types";
+import Modal from "../layout/modal/Modal";
+import { changeUserStatus } from "../../utils";
+// import { UserType } from "../types/index";
 const TheadData = [
   "Organization",
   "Username",
@@ -19,7 +18,12 @@ const TheadData = [
   "Status",
 ];
 
-const UserTable = () => {
+type TableProps = {
+  users: UserType[] | undefined;
+};
+
+const UserTable = (props: TableProps) => {
+  const { users } = props;
   const CardContainerRef = useRef<HTMLDivElement>(null);
   const FilterContainerRef = useRef<HTMLDivElement>(null);
   const [filtertoggle, setFilterToggle] = useState(false);
@@ -27,38 +31,20 @@ const UserTable = () => {
   const [filterPos, setFilterPos] = useState(0);
   const [cardPos, setCardPos] = useState(0);
   const [currentUsername, setCurrentUserName] = useState("");
-  const { organization, status, date, username, phone_number, email } =
-    useFilter();
-  const [isLoading, setIsLoading] = useState(true);
-  const { offset, setTotalPages } = usePaginate();
-  const filteredData = filteredInput({
-    organization,
-    status,
-    date,
-    username,
-    phone_number,
-    email,
-  });
+  const [openModal, setOpenModal] = useState(false);
+  const [message, setMessage] = useState("");
 
-  const users = useLiveQuery(async () => {
-    if (Object.keys(filteredData).length !== 0) {
-      const totalUsers = await db.users.where({ ...filteredData }).count();
-      const users = db.users
-        .where({ ...filteredData })
-        .offset(offset)
-        .limit(10)
-        .toArray();
-      setTotalPages(totalUsers);
-      setIsLoading(false);
-      return users;
-    } else {
-      const totalUsers = await db.users.count();
-      const users = db.users.offset(offset).limit(10).toArray();
-      setTotalPages(totalUsers);
-      setIsLoading(false);
-      return users;
-    }
-  }, [offset, organization, status, date, username, phone_number, email]);
+  const handleStatusChange = (status: string) => {
+    setMessage(status);
+    setOpenModal(true);
+    setCardToggle(false);
+  };
+
+  const confirmStatus = (status: string) => {
+    changeUserStatus(currentUsername, status);
+    setCardToggle(false);
+    setOpenModal(false);
+  };
 
   const handleClick = (pos: number) => {
     setFilterPos(pos);
@@ -73,14 +59,6 @@ const UserTable = () => {
 
   useClickAway(FilterContainerRef, () => setFilterToggle(false));
   useClickAway(CardContainerRef, () => setCardToggle(false));
-
-  if (isLoading) {
-    return (
-      <div className={css.loaderContainer}>
-        <Loader className={css.loader} />;
-      </div>
-    );
-  }
 
   return (
     <div className={css.section_wrapper}>
@@ -126,17 +104,25 @@ const UserTable = () => {
           )}
           {cardtoggle ? (
             <div
-              style={{
-                top: `${cardPos * 10 + 5}%`,
-              }}
+              style={
+                {
+                  "--statusCardPosition": `${cardPos * 10 + 5}%`,
+                } as React.CSSProperties
+              }
               ref={CardContainerRef}
               className={css.statusCard}
             >
               <UserStatusCard
-                setCardToggle={() => setCardToggle(false)}
                 username={currentUsername}
+                handleStatusChange={handleStatusChange}
               />
             </div>
+          ) : openModal ? (
+            <Modal
+              active={openModal}
+              message={message}
+              onConfirm={() => confirmStatus(message)}
+            />
           ) : (
             ""
           )}
