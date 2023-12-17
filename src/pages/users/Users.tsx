@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AllCards, UserCard, UserTable } from "../../components/users";
 import css from "./Users.module.scss";
 import { useFilter, usePaginate } from "../../hooks";
@@ -10,9 +9,8 @@ const Users = () => {
   const { organization, status, date, username, phone_number, email } =
     useFilter();
 
-  const [loading, setLoading] = useState(false);
   const { offset, setTotalPages } = usePaginate();
-  const [activeUser, setActiveUser] = useState(0);
+
   const filteredData = filteredInput({
     organization,
     status,
@@ -23,7 +21,6 @@ const Users = () => {
   });
   const users = useLiveQuery(async () => {
     if (Object.keys(filteredData).length !== 0) {
-      setLoading(true);
       const totalUsers = await db.users.where({ ...filteredData }).count();
       const users = await db.users
         .where({ ...filteredData })
@@ -31,17 +28,12 @@ const Users = () => {
         .limit(10)
         .toArray();
       setTotalPages(totalUsers);
-      setLoading(false);
       return users;
       ("");
     } else {
-      setLoading(true);
-      const activeUsers = await db.users.where({ status: "active" }).count();
-      setActiveUser(activeUsers);
       const totalUsers = await db.users.count();
       const users = await db.users.offset(offset).limit(10).toArray();
       setTotalPages(totalUsers);
-      setLoading(false);
       return users;
     }
   }, [offset, organization, status, date, username, phone_number, email]);
