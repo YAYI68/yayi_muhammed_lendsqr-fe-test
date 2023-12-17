@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
         element: <DashboardLayout />,
         children: [
           {
-            path: "/",
+            path: "/users",
             children: [
               {
                 path: "",

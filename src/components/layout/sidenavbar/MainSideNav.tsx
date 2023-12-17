@@ -1,11 +1,12 @@
 import { useAuth } from "../../../hooks";
 import { ExitIcon } from "../../ui/svg";
-import { DashboardButton, NavLinkSection, SwitchButton } from "./AllLinks";
+import { DashboardButton, MainNavLinkSection, SwitchButton } from "./AllLinks";
 import { SectionLinks } from "./links";
 import css from "./SideNav.module.scss";
 
 const MainSideNav = () => {
   const { setIsAuthenticated } = useAuth();
+
   const logout = () => {
     setIsAuthenticated(false);
   };
@@ -17,7 +18,7 @@ const MainSideNav = () => {
         <div className={css.sidelink_container}>
           <div>
             {SectionLinks.map((section, i) => (
-              <NavLinkSection
+              <MainNavLinkSection
                 key={i}
                 sectionName={section.section}
                 links={section.links}
