@@ -17,6 +17,30 @@ export const filteredInput = (input: any) => {
   return newInput;
 };
 
+// type filterDataType = {
+//   organization: string | undefined;
+//   status: string | undefined;
+//   date: string | undefined;
+//   username: string | undefined;
+//   phone_number: string | undefined;
+//   email: string | undefined;
+// };
+
+export const getUserTableData = async (filteredData: any, offset: number) => {
+  try {
+    const activeUsers = await db.users.where({ status: "active" }).count();
+    const totalUsers = await db.users.count();
+    const users = await db.users
+      .where({ ...filteredData })
+      .offset(offset)
+      .limit(10)
+      .toArray();
+    return { users, activeUsers, totalUsers };
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const changeUserStatus = async (
   username: string | undefined,
   status: string

@@ -12,6 +12,7 @@ const Users = () => {
 
   const [loading, setLoading] = useState(false);
   const { offset, setTotalPages } = usePaginate();
+  const [activeUser, setActiveUser] = useState(0);
   const filteredData = filteredInput({
     organization,
     status,
@@ -32,8 +33,11 @@ const Users = () => {
       setTotalPages(totalUsers);
       setLoading(false);
       return users;
+      ("");
     } else {
       setLoading(true);
+      const activeUsers = await db.users.where({ status: "active" }).count();
+      setActiveUser(activeUsers);
       const totalUsers = await db.users.count();
       const users = await db.users.offset(offset).limit(10).toArray();
       setTotalPages(totalUsers);
