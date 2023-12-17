@@ -3,7 +3,7 @@ import css from "./User.module.scss";
 type CardProps = {
   icon: React.ReactNode;
   info: string;
-  figure: string;
+  figure: string | number;
   bg_color: string;
 };
 const UserCard = (props: CardProps) => {

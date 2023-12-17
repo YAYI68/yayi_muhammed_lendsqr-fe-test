@@ -1,18 +1,6 @@
-import { ActiveUserSvg, UserLoanSvg, UserSavingSvg, UserSvg } from "../ui/svg";
+import { UserLoanSvg, UserSavingSvg } from "../ui/svg";
 
 export const AllCards = [
-  {
-    icon: <UserSvg />,
-    info: "Users",
-    figure: "2,453",
-    bg_color: "rgba(223, 24, 255, .1)",
-  },
-  {
-    icon: <ActiveUserSvg />,
-    info: "Active Users",
-    figure: "2,453",
-    bg_color: "rgba(87, 24, 255, .1)",
-  },
   {
     icon: <UserLoanSvg />,
     info: "Users with Loans",
